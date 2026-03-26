@@ -1,8 +1,7 @@
 #!/bin/sh
-# Instalação do CLI Bee (binários em arcotech-services/platform-bee; repo privado — requer gh auth login).
-# Obter este script:
-#   curl -fsSL https://raw.githubusercontent.com/arcotech-services/platform-engineering/main/bee/install.sh | sh
-# Versão fixa: BEE_VERSION=v1.0.0 curl -fsSL ... | sh
+# Instala o Bee CLI a partir das releases de BEE_REPO (padrão arcotech-services/platform-bee).
+# Obter este script: curl -fsSL https://raw.githubusercontent.com/arcotech-services/platform-engineering/main/bee/install.sh | sh
+# Versão fixa: BEE_VERSION=v1.0.0 curl ... | sh
 
 set -eu
 
