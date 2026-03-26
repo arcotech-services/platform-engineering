@@ -44,7 +44,10 @@ if [ "$BEE_VERSION" = "latest" ]; then
     echo "Para instalar a última versão é necessário git. Use BEE_VERSION=vX.Y.Z"
     exit 1
   fi
-  tags=$(git ls-remote --tags "https://github.com/${BEE_REPO}.git" 2>/dev/null | grep 'refs/tags/' | grep -v '\^{}' | sed 's|.*refs/tags/||')
+  tags=$(git ls-remote --tags "git@github.com:${BEE_REPO}.git" 2>/dev/null | grep 'refs/tags/' | grep -v '\^{}' | sed 's|.*refs/tags/||')
+  if [ -z "$tags" ]; then
+    tags=$(git ls-remote --tags "https://github.com/${BEE_REPO}.git" 2>/dev/null | grep 'refs/tags/' | grep -v '\^{}' | sed 's|.*refs/tags/||')
+  fi
   if [ -z "$tags" ]; then
     echo "Nenhum release em ${BEE_REPO}. Use BEE_VERSION=tag"
     exit 1

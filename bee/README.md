@@ -5,7 +5,7 @@ Este diretório contém o script [`install.sh`](install.sh) usado para instalar 
 ## Requisitos
 
 - **GitHub CLI** (`gh`) autenticado (`gh auth login`) com permissão para ler releases do repositório das releases, **ou** acesso HTTP(S)/SSH ao mesmo repositório conforme sua configuração de credenciais.
-- Com `BEE_VERSION=latest` (padrão): **git** acessível e credenciais que permitam `git ls-remote` no repositório das releases (listar tags).
+- Com `BEE_VERSION=latest` (padrão): **git** acessível e credenciais que permitam `git ls-remote` no repositório das releases (listar tags). O script tenta primeiro a URL SSH (`git@github.com:...`); se não houver tags, tenta HTTPS.
 - **Linux/macOS:** instalação em `/usr/local/bin` (usa `sudo` se necessário).
 
 ## Uso
