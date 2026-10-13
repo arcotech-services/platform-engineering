@@ -10,6 +10,13 @@ BEE_REPO=${BEE_REPO:-arcotech-services/poc-bee-humanitec}
 BEE_VERSION=${BEE_VERSION:-latest}
 BIN=${BIN:-bee}
 
+# BIN vira caminho sob /usr/local/bin (às vezes com sudo): só nome simples.
+case $BIN in
+  '' | . | .. | */* | *\\*)
+    printf "BIN deve ser um nome de arquivo simples (recebido: '%s').\n" "$BIN"
+    exit 1 ;;
+esac
+
 os=$(uname -s)
 arch=$(uname -m)
 OS=${OS:-"${os}"}
@@ -39,7 +46,15 @@ case $OS in
     unsupported_arch "$OS" "$ARCH" ;;
 esac
 
-if [ "$BEE_VERSION" = "latest" ]; then
+latest_release=""
+if [ "$BEE_VERSION" = "latest" ] && command -v gh >/dev/null 2>&1; then
+  # Release "latest" do GitHub: ignora pre-release e tag cujo release falhou ou ainda não saiu.
+  latest_release=$(gh release view -R "${BEE_REPO}" --json tagName -q .tagName 2>/dev/null) || latest_release=""
+fi
+
+if [ -n "$latest_release" ]; then
+  VERSION="$latest_release"
+elif [ "$BEE_VERSION" = "latest" ]; then
   if ! command -v git >/dev/null 2>&1; then
     echo "Para instalar a última versão é necessário git. Use BEE_VERSION=vX.Y.Z"
     exit 1
