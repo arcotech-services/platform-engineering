@@ -1,6 +1,6 @@
 # Bee CLI (novo) — instalador
 
-Baixa o binário das releases do repositório `arcotech-services/poc-bee-humanitec`.
+Baixa o binário das releases do repositório `arcotech-services/arcoeducacao-platform`.
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/arcotech-services/platform-engineering/main/bee-platform/install.sh | sh

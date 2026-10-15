@@ -1,12 +1,12 @@
 #!/bin/sh
-# Instala o novo Bee CLI a partir das releases de BEE_REPO (padrão arcotech-services/poc-bee-humanitec).
+# Instala o novo Bee CLI a partir das releases de BEE_REPO (padrão arcotech-services/arcoeducacao-platform).
 # Obter este script: curl -fsSL https://raw.githubusercontent.com/arcotech-services/platform-engineering/main/bee-platform/install.sh | sh
 # Versão fixa: curl ... | BEE_VERSION=v1.0.0 sh
 # Lado a lado com o Bee antigo: curl ... | BIN=bee-next sh
 
 set -eu
 
-BEE_REPO=${BEE_REPO:-arcotech-services/poc-bee-humanitec}
+BEE_REPO=${BEE_REPO:-arcotech-services/arcoeducacao-platform}
 BEE_VERSION=${BEE_VERSION:-latest}
 BIN=${BIN:-bee}
 
